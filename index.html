@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Affichage web - Chronométrage</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+h1 { margin-bottom: 12px; }
+.controls { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+.control-group { background: white; padding: 10px; border-radius: 6px; }
+button { padding: 9px 14px; font-size: 15px; cursor: pointer; margin: 3px; }
+button.active { font-weight: bold; outline: 3px solid #555; }
+#chrono { font-size: 42px; font-weight: bold; margin: 12px 0 20px; }
+.info { margin-bottom: 12px; }
+table { border-collapse: collapse; width: 100%; background: white; }
+th, td { border: 1px solid #ccc; padding: 7px; text-align: left; }
+th { background: #e8e8e8; position: sticky; top: 0; }
+.female { background: #ffdede; }
+</style>
+</head>
+<body>
+<h1 id="title">Course 1 — Mixte — Toute catégorie</h1>
+<div class="controls">
+  <div class="control-group"><strong>Course :</strong><br>
+    <button id="course1" onclick="chooseCourse(0)">Course 1</button>
+    <button id="course2" onclick="chooseCourse(1)">Course 2</button>
+  </div>
+  <div class="control-group"><strong>Classement :</strong><br>
+    <button id="mixte" onclick="chooseGender('mixte')">Mixte</button>
+    <button id="homme" onclick="chooseGender('homme')">Homme</button>
+    <button id="femme" onclick="chooseGender('femme')">Femme</button>
+  </div>
+  <div class="control-group"><strong>Catégorie :</strong><br>
+    <button id="cat-Toute-catégorie" onclick="chooseCategory('Toute catégorie')">Toute catégorie</button>
+    <button id="cat-Cadet" onclick="chooseCategory('Cadet')">Cadet</button>
+    <button id="cat-Junior" onclick="chooseCategory('Junior')">Junior</button>
+    <button id="cat-Espoir" onclick="chooseCategory('Espoir')">Espoir</button>
+    <button id="cat-Senior" onclick="chooseCategory('Senior')">Senior</button>
+    <button id="cat-M0" onclick="chooseCategory('M0')">M0</button>
+    <button id="cat-M1" onclick="chooseCategory('M1')">M1</button><button id="cat-M2" onclick="chooseCategory('M2')">M2</button><button id="cat-M3" onclick="chooseCategory('M3')">M3</button><button id="cat-M4" onclick="chooseCategory('M4')">M4</button><button id="cat-M5" onclick="chooseCategory('M5')">M5</button><button id="cat-M6" onclick="chooseCategory('M6')">M6</button><button id="cat-M7" onclick="chooseCategory('M7')">M7</button><button id="cat-M8" onclick="chooseCategory('M8')">M8</button><button id="cat-M9" onclick="chooseCategory('M9')">M9</button><button id="cat-M10" onclick="chooseCategory('M10')">M10</button>
+
+  </div>
+</div>
+<div id="chrono">--:--:--.---</div>
+<div class="info">Arrivées : <strong id="count">0</strong> &nbsp; | &nbsp; Statut : <strong id="status">---</strong></div>
+<table><thead><tr><th>Rang</th><th>Dossard</th><th>Nom</th><th>Prénom</th><th>Sexe</th><th>Catégorie</th><th>Club</th><th>Temps</th></tr></thead>
+<tbody id="results"></tbody></table>
+<script>
+window.STATIC_STATE = {"courses": [{"name": "Course 1", "csv_filename": "Louis-11k", "active": true, "started": true, "elapsed": 13718.932827949524, "results": [{"rank": 1, "dossard": "101", "nom": "HUSSON", "prenom": "Laetitia", "sexe": "F", "categorie": "M1", "club": "", "temps": "00:00:06.626", "timestamp": "2026-10-25T15:00:35.551"}, {"rank": 2, "dossard": "102", "nom": "GOÛT", "prenom": "Johann", "sexe": "M", "categorie": "M2", "club": "SENS ROUTE TRAIL", "temps": "00:00:11.773", "timestamp": "2026-10-25T15:00:40.698"}, {"rank": 3, "dossard": "103", "nom": "CHEVALIER", "prenom": "Gary", "sexe": "M", "categorie": "Senior", "club": "", "temps": "00:00:15.124", "timestamp": "2026-10-25T15:00:44.048"}, {"rank": 4, "dossard": "104", "nom": "MORLAY", "prenom": "Anaïs", "sexe": "F", "categorie": "M1", "club": "", "temps": "00:00:17.745", "timestamp": "2026-10-25T15:00:46.670"}, {"rank": 5, "dossard": "201", "nom": "BRIDERON", "prenom": "Virginie", "sexe": "F", "categorie": "M1", "club": "Gati'Raid", "temps": "00:00:20.148", "timestamp": "2026-10-25T15:00:49.073"}, {"rank": 6, "dossard": "230", "nom": "LAMI", "prenom": "Gregory", "sexe": "M", "categorie": "M1", "club": "", "temps": "00:00:22.536", "timestamp": "2026-10-25T15:00:51.461"}, {"rank": 7, "dossard": "105", "nom": "LORILLON", "prenom": "Sebastien", "sexe": "M", "categorie": "M3", "club": "", "temps": "02:52:29.037", "timestamp": "2026-10-25T17:52:57.962"}, {"rank": 8, "dossard": "108", "nom": "POLI", "prenom": "Yann", "sexe": "M", "categorie": "M1", "club": "", "temps": "03:22:04.902", "timestamp": "2026-10-25T18:22:33.827"}, {"rank": 9, "dossard": "113", "nom": "L'HOTELLIER", "prenom": "Guillaume", "sexe": "M", "categorie": "M1", "club": "", "temps": "03:27:25.232", "timestamp": "2026-10-25T18:27:54.158"}]}, {"name": "Course 2", "csv_filename": "Villersoise-20k", "active": true, "started": true, "elapsed": 13715.875301837921, "results": [{"rank": 1, "dossard": "302", "nom": "BRIGOLLE", "prenom": "Axel", "sexe": "M", "categorie": "M0", "club": "", "temps": "00:00:22.050", "timestamp": "2026-10-25T15:00:54.032"}, {"rank": 2, "dossard": "332", "nom": "CHATELAIN", "prenom": "Thibaut", "sexe": "M", "categorie": "M3", "club": "USA Chapelle St Luc", "temps": "00:00:26.807", "timestamp": "2026-10-25T15:00:58.789"}, {"rank": 3, "dossard": "301", "nom": "MASUYER", "prenom": "Tristan", "sexe": "M", "categorie": "Espoir", "club": "", "temps": "00:00:29.130", "timestamp": "2026-10-25T15:01:01.113"}, {"rank": 4, "dossard": "304", "nom": "BOTTINEAU", "prenom": "Jean-sébastien", "sexe": "M", "categorie": "M1", "club": "", "temps": "00:00:32.503", "timestamp": "2026-10-25T15:01:04.485"}, {"rank": 5, "dossard": "305", "nom": "BOUGAULT", "prenom": "Antoine", "sexe": "M", "categorie": "Senior", "club": "", "temps": "00:00:37.520", "timestamp": "2026-10-25T15:01:09.502"}, {"rank": 6, "dossard": "306", "nom": "ACKER", "prenom": "Sébastien", "sexe": "M", "categorie": "M0", "club": "", "temps": "00:00:40.992", "timestamp": "2026-10-25T15:01:12.975"}, {"rank": 7, "dossard": "307", "nom": "DEVAUX", "prenom": "Charly", "sexe": "M", "categorie": "Senior", "club": "", "temps": "00:00:43.647", "timestamp": "2026-10-25T15:01:15.629"}, {"rank": 8, "dossard": "308", "nom": "DUSSART", "prenom": "Joseph", "sexe": "M", "categorie": "Senior", "club": "", "temps": "00:00:45.900", "timestamp": "2026-10-25T15:01:17.883"}, {"rank": 9, "dossard": "309", "nom": "BULARD", "prenom": "Olivier", "sexe": "M", "categorie": "M4", "club": "SRT", "temps": "00:00:48.947", "timestamp": "2026-10-25T15:01:20.929"}, {"rank": 10, "dossard": "310", "nom": "BRETON PINEAU", "prenom": "Mathieu", "sexe": "M", "categorie": "Espoir", "club": "", "temps": "00:00:51.504", "timestamp": "2026-10-25T15:01:23.486"}, {"rank": 11, "dossard": "311", "nom": "BARD", "prenom": "Emeline", "sexe": "F", "categorie": "M1", "club": "Sens Route Trail", "temps": "00:00:55.076", "timestamp": "2026-10-25T15:01:27.058"}, {"rank": 12, "dossard": "312", "nom": "YVON", "prenom": "Pauline", "sexe": "F", "categorie": "M0", "club": "Srt", "temps": "00:00:59.035", "timestamp": "2026-10-25T15:01:31.017"}]}]};
+
+let selectedCourse = 0;
+let selectedGender = 'mixte';
+let selectedCategory = 'Toute catégorie';
+let currentState = null;
+function formatTime(seconds) { if (seconds === null || seconds === undefined) return '--:--:--.---'; let ms=Math.max(0,Math.round(seconds*1000)); let h=Math.floor(ms/3600000);ms%=3600000;let m=Math.floor(ms/60000);ms%=60000;let s=Math.floor(ms/1000);ms%=1000;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+String(ms).padStart(3,'0'); }
+function chooseCourse(i){selectedCourse=i;render();}
+function chooseGender(g){selectedGender=g;render();}
+function chooseCategory(c){selectedCategory=c;render();}
+function categoryMatches(a, category){
+  if(category==='Toute catégorie') return true;
+  return (a.categorie||'').trim().toUpperCase()===category.toUpperCase();
+}
+function setActiveButtons(){document.querySelectorAll('.controls button').forEach(b=>b.classList.remove('active'));document.getElementById('course'+(selectedCourse+1)).classList.add('active');document.getElementById(selectedGender).classList.add('active');const cat=document.getElementById('cat-'+selectedCategory.replaceAll(' ','-').replaceAll('_','-'));if(cat)cat.classList.add('active');}
+function render(){if(!currentState)return;currentState.courses.forEach((c,i)=>{document.getElementById('course'+(i+1)).textContent=c.csv_filename||c.name;});const course=currentState.courses[selectedCourse];document.getElementById('title').textContent=(course.csv_filename||course.name)+' — '+(selectedGender==='mixte'?'Mixte':selectedGender==='homme'?'Homme':'Femme')+' — '+selectedCategory;document.getElementById('chrono').textContent=formatTime(course.elapsed);document.getElementById('status').textContent=course.active?'EN COURS':(course.started?'ARRÊTÉ':'NON DÉMARRÉ');let results=course.results.filter(a=>selectedGender==='mixte'||(selectedGender==='homme'?['M','H','MALE'].includes((a.sexe||'').toUpperCase()):['F','FEM','FEMALE'].includes((a.sexe||'').toUpperCase()))).filter(a=>categoryMatches(a,selectedCategory));document.getElementById('count').textContent=results.length;const tbody=document.getElementById('results');tbody.innerHTML='';results.forEach((a,index)=>{const tr=document.createElement('tr');if(selectedGender==='mixte'&&['F','FEM','FEMALE'].includes((a.sexe||'').toUpperCase()))tr.classList.add('female');[index+1,a.dossard,a.nom,a.prenom,a.sexe,a.categorie,a.club,a.temps].forEach(v=>{const td=document.createElement('td');td.textContent=v??'';tr.appendChild(td);});tbody.appendChild(tr);});setActiveButtons();}
+async function refresh(){if(window.STATIC_STATE){currentState=window.STATIC_STATE;render();return;}try{const r=await fetch('/api/state');currentState=await r.json();render();}catch(e){document.getElementById('status').textContent='Connexion perdue';}}refresh();if(!window.STATIC_STATE)setInterval(refresh,500);
+</script></body></html>
